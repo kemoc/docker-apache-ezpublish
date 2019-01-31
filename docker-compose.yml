@@ -1,0 +1,23 @@
+version: '3'
+
+#env_file:
+#  - ./.env
+
+networks:
+    frontend:
+    backend:
+
+services:
+    httpd:
+        build: ./build/
+        #tty: true
+        ports:
+            - 21084:80
+        volumes:
+            - ${APP_PATH}:/var/www/project:rw
+            - ./etc/apache2/sites-enabled/project.conf:/etc/apache2/sites-enabled/project.conf
+        #depends_on:
+        #    - app
+        networks:
+            - frontend
+            - backend
