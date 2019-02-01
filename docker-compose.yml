@@ -12,9 +12,9 @@ services:
         build: ./build/
         #tty: true
         ports:
-            - 21084:80
+            - ${HOST_APACHE_PORT}:80
         volumes:
-            - ${APP_PATH}:/var/www/project:rw
+            - ${APP_PATH}:${DOCKER_APP_PATH}:rw
             - ./etc/apache2/sites-enabled/project.conf:/etc/apache2/sites-enabled/project.conf
         #depends_on:
         #    - app
